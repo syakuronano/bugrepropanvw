@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ViewModels="clr-namespace:CoverflowIssue.ViewModels"
+             xmlns:template="clr-namespace:CoverflowIssue.PageTemplate"
+             xmlns:selector="clr-namespace:CoverflowIssue.Controls"
+             xmlns:card="clr-namespace:PanCardView;assembly=PanCardView"
+             xmlns:local="clr-namespace:CoverflowIssue"
+             x:Class="CoverflowIssue.MainPage">
+
+    <ContentPage.BindingContext>
+        <ViewModels:CaroueselIssueViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <!-- TemplateSelector | CARD 1 -->
+            <DataTemplate x:Key="firstTemplate">
+                <template:FirstTemplate />
+            </DataTemplate>
+            <!-- TemplateSelector | CARD 2 -->
+            <DataTemplate x:Key="secondTemplate">
+                <template:SecondTemplate />
+            </DataTemplate>
+            <!-- TemplateSelector | CARD 3 -->
+            <DataTemplate x:Key="thirdTemplate">
+                <template:ThirdTemplate />
+            </DataTemplate>
+            <!-- TemplateSelector | CARD 4 -->
+            <DataTemplate x:Key="fourthTemplate">
+                <template:FourthTemplate />
+            </DataTemplate>
+            <selector:TemplateSelector x:Key="cardTemplateSelector"
+                                           FirstTemplate="{StaticResource firstTemplate}"
+                                           SecondTemplate="{StaticResource secondTemplate}"
+                                           ThirdTemplate="{StaticResource thirdTemplate}"
+                                           FourthTemplate="{StaticResource fourthTemplate}" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="30"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="30"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="40"/>
+            </Grid.RowDefinitions>
+            <StackLayout Grid.Column="1" Grid.Row="1"
+                         Padding="0,20,0,0"
+                         VerticalOptions="FillAndExpand"
+                         HorizontalOptions="FillAndExpand">
+                <StackLayout VerticalOptions="FillAndExpand">
+                    <card:CoverFlowView PositionShiftValue="60"
+                                             IsCyclical="True"
+                                             IsVerticalSwipeEnabled="True"
+                                             IsPanSwipeEnabled="True"
+                                             IsAutoInteractionRunning="False"
+                                             IsUserInteractionRunning="true"
+                                             ItemsSource="{Binding CardItems}"
+                                             ItemTemplate="{StaticResource cardTemplateSelector}"
+                                             VerticalOptions="FillAndExpand">
+
+                    </card:CoverFlowView>
+                </StackLayout>
+            </StackLayout>
+        </Grid>
+
+    </ContentPage.Content>
+
+</ContentPage>
