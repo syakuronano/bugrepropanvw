@@ -3,10 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CoverflowIssue.PageTemplate.SecondTemplate">
   <ContentView.Content>
-        <Frame>
-            <StackLayout BackgroundColor="{Binding BgColor}">
+        <Frame  Margin="5">
+            <StackLayout BackgroundColor="{Binding BgColor}" HorizontalOptions="FillAndExpand">
                 <Label Text="{Binding Title}"
                    TextColor="{Binding TitleColor}"
+                       HorizontalOptions="FillAndExpand"
                />
             </StackLayout>
         </Frame>

@@ -11,7 +11,7 @@ namespace CoverflowIssue
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new mainPage1();
         }
 
         protected override void OnStart()

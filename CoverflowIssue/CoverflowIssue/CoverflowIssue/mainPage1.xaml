@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ViewModels="clr-namespace:CoverflowIssue.ViewModels"
+             xmlns:template="clr-namespace:CoverflowIssue.PageTemplate"
+             xmlns:selector="clr-namespace:CoverflowIssue.Controls"
+             x:Class="CoverflowIssue.mainPage1">
+    <ContentPage.BindingContext>
+        <ViewModels:CaroueselIssueViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <!-- TemplateSelector | CARD 1 -->
+            <DataTemplate x:Key="firstTemplate">
+                <template:FirstTemplate />
+            </DataTemplate>
+            <!-- TemplateSelector | CARD 2 -->
+            <DataTemplate x:Key="secondTemplate">
+                <template:SecondTemplate />
+            </DataTemplate>
+            <!-- TemplateSelector | CARD 3 -->
+            <DataTemplate x:Key="thirdTemplate">
+                <template:ThirdTemplate />
+            </DataTemplate>
+            <!-- TemplateSelector | CARD 4 -->
+            <DataTemplate x:Key="fourthTemplate">
+                <template:FourthTemplate />
+            </DataTemplate>
+            <selector:TemplateSelector x:Key="cardTemplateSelector"
+                                           FirstTemplate="{StaticResource firstTemplate}"
+                                           SecondTemplate="{StaticResource secondTemplate}"
+                                           ThirdTemplate="{StaticResource thirdTemplate}"
+                                           FourthTemplate="{StaticResource fourthTemplate}" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="FillAndExpand">
+            <CarouselView WidthRequest="120"
+                Margin="10"
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="CenterAndExpand"
+                ItemsSource="{Binding CardItems}"
+                ItemTemplate="{StaticResource cardTemplateSelector}"
+                >
+                <CarouselView.ItemsLayout>
+                    <GridItemsLayout
+                        Orientation="Horizontal"
+                        SnapPointsAlignment="Center"
+                        SnapPointsType="Mandatory"/>
+                </CarouselView.ItemsLayout>
+            </CarouselView>
+            <Label Text="Welcome to Xamarin.Forms!"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

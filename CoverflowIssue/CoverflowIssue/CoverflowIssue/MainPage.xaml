@@ -53,7 +53,7 @@
                          VerticalOptions="FillAndExpand"
                          HorizontalOptions="FillAndExpand">
                 <StackLayout VerticalOptions="FillAndExpand">
-                    <card:CoverFlowView PositionShiftValue="60"
+                    <card:CoverFlowView PositionShiftValue="30"
                                              IsCyclical="True"
                                              IsVerticalSwipeEnabled="True"
                                              IsPanSwipeEnabled="True"
